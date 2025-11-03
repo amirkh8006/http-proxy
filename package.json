@@ -1,0 +1,23 @@
+{
+  "name": "http-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirkh8006/http-proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirkh8006/http-proxy/issues"
+  },
+  "homepage": "https://github.com/amirkh8006/http-proxy#readme",
+  "description": "",
+  "dependencies": {
+    "http-proxy": "^1.18.1"
+  }
+}
