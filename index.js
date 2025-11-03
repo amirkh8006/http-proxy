@@ -9,7 +9,6 @@ const proxy = httpProxy.createProxyServer({});
 const server = http.createServer((req, res) => {
   console.log(`➡️ HTTP ${req.method} ${req.url}`);
   proxy.web(req, res, { target: req.url, changeOrigin: true }, (err) => {
-    console.error("Proxy error:", err.message);
     res.writeHead(502);
     res.end("Bad Gateway");
   });
@@ -18,7 +17,6 @@ const server = http.createServer((req, res) => {
 // Handle HTTPS CONNECT requests (tunneling)
 server.on("connect", (req, clientSocket, head) => {
   const { port, hostname } = url.parse(`//${req.url}`, false, true);
-  console.log(`🔒 HTTPS CONNECT ${hostname}:${port}`);
 
   const serverSocket = net.connect(port || 443, hostname, () => {
     clientSocket.write("HTTP/1.1 200 Connection Established\r\n\r\n");
@@ -28,7 +26,6 @@ server.on("connect", (req, clientSocket, head) => {
   });
 
   serverSocket.on("error", (err) => {
-    console.error("Tunnel error:", err.message);
     clientSocket.end();
   });
 });
