@@ -7,7 +7,6 @@ const proxy = httpProxy.createProxyServer({});
 
 // Handle normal HTTP requests
 const server = http.createServer((req, res) => {
-  console.log(`➡️ HTTP ${req.method} ${req.url}`);
   proxy.web(req, res, { target: req.url, changeOrigin: true }, (err) => {
     res.writeHead(502);
     res.end("Bad Gateway");
